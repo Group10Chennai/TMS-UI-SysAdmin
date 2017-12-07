@@ -12,30 +12,18 @@
 </div> <!-- /widget-header -->
 
 <div class="widget-content table-responsive">
-  <!--<form>
-    <div class="form-group row ">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-search"></i></div>
-          <input type="text" placeholder= "Search" class="form-control" ng-model="TMSVehicleUser_searchWord"
-           ng-change = "searchVehUserDetails()">
-        </div>
-      </div>
-    </div>
-  </form>-->
-  
   <form>
     <div class="form-group row ">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search"></i></div>
-           <input type="text" placeholder= "Search" class="form-control" 
+           <input type="text" placeholder= "Search" class="form-control"
                 ng-model="searchStringForvehUserDetails" ng-change="searchVehUserDetails()">
         </div>
       </div>
     </div>
   </form>
-  
+
   <table class="table table-fixed table-bordered table-hover" ng-if="VehicleUserDetails.length > 0">
   	<thead class="tablehead">
 	    <tr class="tablehead">
@@ -83,12 +71,12 @@
 		<td class="tablebody-td">{{ vehUserDetails.orgId }} </td>
 		<td class="tablebody-td">{{ vehUserDetails.veh_CreatedDateTime | date : 'dd-MM-yyyy HH:mm:ss'}}</td>
 		<td class="tableHead-center tablebody-td" ng-if= "vehUserDetails.status == 1">
-                    <!--<button style="padding: 0px 5px;" class="btn btn-success btn-xs"  onclick="disableVehicle(vehUserDetails.vehName);">Enabled</button>-->
-                    <button style="padding: 0px 5px;" class="btn btn-success btn-xs"  ng-click="disableVehicle(vehUserDetails.vehName, vehUserDetails.userName);">Enabled</button>
+      <!--<button style="padding: 0px 5px;" class="btn btn-success btn-xs"  onclick="disableVehicle(vehUserDetails.vehName);">Enabled</button>-->
+      <button style="padding: 0px 5px;" class="btn btn-success btn-xs"  ng-click="disableVehicle(vehUserDetails.vehName, vehUserDetails.userName);">Enabled</button>
 		</td>
-                <td class="tableHead-center tablebody-td" ng-if= "vehUserDetails.status != 1">
-                    <!--<button style="padding: 0px 5px;" class="btn btn-danger btn-xs" onclick="enableVehicle(vehUserDetails.vehName);">Disabled</button>-->
-                    <button style="padding: 0px 5px;" class="btn btn-danger btn-xs" ng-click="enableVehicle(vehUserDetails.vehName, vehUserDetails.userName);">Disabled</button>
+      <td class="tableHead-center tablebody-td" ng-if= "vehUserDetails.status != 1">
+      <!--<button style="padding: 0px 5px;" class="btn btn-danger btn-xs" onclick="enableVehicle(vehUserDetails.vehName);">Disabled</button>-->
+      <button style="padding: 0px 5px;" class="btn btn-danger btn-xs" ng-click="enableVehicle(vehUserDetails.vehName, vehUserDetails.userName);">Disabled</button>
 		</td>
 	    </tr>
   	</tbody>
@@ -136,5 +124,5 @@
 </div>
 
 <script>
-    
+
 </script>

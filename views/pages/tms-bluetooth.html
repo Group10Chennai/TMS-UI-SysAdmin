@@ -35,8 +35,14 @@
 </div>
 
 <div class="widget-header" style="margin-top: 0.1em;">
-    <i class="fa fa-list" aria-hidden="true"></i>
-    <h3> Bluetooth List </h3>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-12">
+      <i class="fa fa-list" aria-hidden="true"></i>
+      <h3> Bluetooth List </h3>
+      <span style="float: right;"> {{nextIndex_bctrl + 1}} -
+        {{nextIndex_bctrl + itemsPerPage_bctrl}} of {{totalItems_bctrl}}</span>
+    </div>
+  </div>
 </div> <!-- /widget-header -->
 
 <div class="widget-content table-responsive" id="tmsData_id">
@@ -45,7 +51,8 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="input-group">
 		    <div class="input-group-addon"><i class="fa fa-search"></i></div>
-		    <input type="text" placeholder= "Search by vehicle" class="form-control" ng-model="tmsBT_searchData">
+		    <input type="text" placeholder= "Search by vehicle" class="form-control"
+          ng-model="searchStringForBctrl" ng-change = "searchBCtrl()">
 		</div>
 	    </div>
 	</div>
@@ -108,8 +115,9 @@
 	    </button>
 	</tbody>
     </table>
-    <uib-pagination total-items="totalItems_services" ng-model="currentPage_services"
-    items-per-page="itemsPerPage_services" max-size="maxSize_services" ng-change="pageChanged_Bluetooth()"
+
+    <uib-pagination total-items="totalItems_bctrl" ng-model="currentPage_bctrl"
+    items-per-page="itemsPerPage_bctrl" max-size="maxSize_bctrl" ng-change="pageChanged_Bluetooth()"
     boundary-link-numbers="true" rotate="true" boundary-links="true"></uib-pagination>
 </div>
 

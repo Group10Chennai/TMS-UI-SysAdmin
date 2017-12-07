@@ -7,12 +7,12 @@
         </li>
     </ul>
     <ul class="nav navbar-nav ml-auto d-md-down-none">
-         <!-- <li class="nav-item" ng-show="totalVehiclesCount > 0">
-          <div class="nav-item">
-              <span class="tot-fleet"><i class="fa fa-bus" style="color: black"></i> Total fleet : {{ totalVehiclesCount }}</span>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item" ng-show="allVehCount > 0">
+         <div class="nav-item">
+             <span class="tot-fleet"><i class="fa fa-bus" style="color: black"></i> Total fleet : {{ allVehCount }}</span>
+         </div>
+       </li>
+        <!-- <li class="nav-item dropdown">
             <select id="display_selectDeport_id" ng-options="deport.group_id as deport.group_code for deport in deportList | orderBy:'group_code'"
                ng-model="selectedDeportId" ng-change="depotChanged()">
              </select>

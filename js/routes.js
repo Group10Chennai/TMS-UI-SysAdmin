@@ -96,161 +96,6 @@ angular
       }]
     }
   })
-
-  .state('app.map', {
-    url: '/mapview',
-    templateUrl: 'views/pages/map.html',
-    controller: 'MapController',
-    //page title goes here
-    ncyBreadcrumb: {
-      label: 'Map',
-    },
-    //page subtitle goes here
-    params: { subtitle: 'Complete Fleet Management' },
-    resolve: {
-      loadCSS: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load CSS files
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/font-awesome.min.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        },{
-          serie: true,
-          name: 'select2',
-          files: ['css/map-style.css']
-        }]);
-      }],
-      loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load([
-          {
-            serie: true,
-            name: 'chart.js',
-            files: [
-              'bower_components/google-map/infobox.js',
-              'bower_components/google-map/jquery.easing.1.3.js',
-              'bower_components/google-map/markerAnimate.js',
-              'bower_components/google-map/SlidingMarker.js',
-              'js/plotmap.js'
-            ]
-          },
-        ]);
-      }],
-      // loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-      //   // you can lazy load controllers
-      //   return $ocLazyLoad.load({
-      //     files: ['bower_components/google-map/infobox.js',
-      //             'bower_components/google-map/markerAnimate.js',
-      //             'bower_components/google-map/SlidingMarker.js',
-      //             'js/plotmap.js'
-      //           ]
-      //   });
-      // }]
-    }
-
-  })
-
-  .state('app.table', {
-    url: '/tableview',
-    templateUrl: 'views/pages/table.html',
-    controller: 'TableController',
-    //page title goes here
-    ncyBreadcrumb: {
-      label: 'Table',
-    },
-    //page subtitle goes here
-    params: { subtitle: 'Complete Fleet Management' },
-    resolve: {
-      loadCSS: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load CSS files
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/font-awesome.min.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        }]);
-      }],
-    }
-
-  })
-
-  .state('app.chart', {
-    url: '/chart',
-    templateUrl: 'views/charts.html',
-    controller: 'ChartController',
-    //page title goes here
-    ncyBreadcrumb: {
-      label: 'Chart',
-    },
-    //page subtitle goes here
-    params: { subtitle: 'Complete Fleet Management' },
-    resolve: {
-      loadCSS: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load CSS files
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/font-awesome.min.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        }]);
-      }],
-    }
-  })
-
-  .state('app.reports', {
-    url: '/reports',
-    templateUrl: 'views/pages/reports.html',
-    controller: 'ReportsController',
-    //page title goes here
-    ncyBreadcrumb: {
-      label: 'Table',
-    },
-    //page subtitle goes here
-    params: { subtitle: 'Complete Fleet Management' },
-    resolve: {
-      loadCSS: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load CSS files
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/font-awesome.min.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        },{
-          serie: true,
-          name: 'JS Tree',
-          files: ['bower_components/jstree/themes/default/style.min.css']
-        }]);
-      }],
-      loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load([
-          {
-            serie: true,
-            name: 'chart.js',
-            files: [
-              'bower_components/moment.js',
-              'bower_components/jstree/jstree.js'
-              //'js/reports.js'
-            ]
-          },
-        ]);
-      }],
-    }
-  })
-
   .state('appSimple', {
     abstract: true,
     templateUrl: 'views/common/layouts/simple.html',
@@ -304,11 +149,11 @@ angular
     //page subtitle goes here
     params: { subtitle: 'Tyre Monitor System' },
   })
-  
+
   .state('app.tms-vehicleDetails', {
     url: '/tms-vehicleDetails',
     templateUrl: 'views/pages/tms-vehicleDetails.html',
-    controller: 'TMSController',
+    controller: 'TMSSysAdminController',
     //page title goes here
     ncyBreadcrumb: {
       label: 'TMS',
@@ -356,7 +201,7 @@ angular
   .state('app.tms-sensor', {
     url: '/tms-sensor',
     templateUrl: 'views/pages/tms-sensor.html',
-    controller: 'TMSController',
+    controller: 'TMSSysAdminController',
     //page title goes here
     ncyBreadcrumb: {
       label: 'TMS',
@@ -368,7 +213,7 @@ angular
   .state('app.tms-bluetooth', {
     url: '/tms-bluetooth',
     templateUrl: 'views/pages/tms-bluetooth.html',
-    controller: 'TMSController',
+    controller: 'TMSSysAdminController',
     //page title goes here
     ncyBreadcrumb: {
       label: 'TMS',
@@ -380,7 +225,7 @@ angular
   .state('app.tms-rfid', {
     url: '/tms-rfid',
     templateUrl: 'views/pages/tms-rfid.html',
-    controller: 'TMSController',
+    controller: 'TMSSysAdminController',
     //page title goes here
     ncyBreadcrumb: {
       label: 'TMS',
@@ -392,7 +237,7 @@ angular
   .state('app.tms-assignVehicle', {
     url: '/tms-assignVehicle',
     templateUrl: 'views/pages/tms-assignVehicle.html',
-    controller: 'TMSController',
+    controller: 'TMSSysAdminController',
     //page title goes here
     ncyBreadcrumb: {
       label: 'TMS',
@@ -400,7 +245,6 @@ angular
     //page subtitle goes here
     params: { subtitle: 'Tyre Monitor System' },
   })
-  
   .state('app.tyreTempPressure', {
     url: '/tyreTempPressure',
     templateUrl: 'views/pages/tyreTempPressure.html',
@@ -412,14 +256,6 @@ angular
     //page subtitle goes here
     params: { subtitle: 'Tyre Monitor System' },
   })
-
-  // Additional Pages
-  //.state('appSimple.login', {
-  //  url: '/login',
-  //  templateUrl: 'views/pages/login.html',
-  //  controller:"LoginController"
-  //})
-
   .state('app.tms-vehDetails', {
     url: '/vehDetails',
     templateUrl: 'views/pages/tms-semiCongVeh.html',
