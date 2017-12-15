@@ -7,11 +7,11 @@
         </li>
     </ul>
     <ul class="nav navbar-nav ml-auto d-md-down-none">
-        <li class="nav-item" ng-show="allVehCount > 0">
-         <div class="nav-item">
-             <span class="tot-fleet"><i class="fa fa-bus" style="color: black"></i> Total fleet : {{ allVehCount }}</span>
-         </div>
-       </li>
+         <!-- <li class="nav-item" ng-show="allVehCount > 0">
+          <div class="nav-item">
+              <span class="tot-fleet"><i class="fa fa-bus" style="color: black"></i> Total fleet : {{ allVehCount }}</span>
+          </div>
+        </li> -->
         <!-- <li class="nav-item dropdown">
             <select id="display_selectDeport_id" ng-options="deport.group_id as deport.group_code for deport in deportList | orderBy:'group_code'"
                ng-model="selectedDeportId" ng-change="depotChanged()">
@@ -23,7 +23,7 @@
                <span class="user-fontName">&nbsp; {{UserName}} &nbsp; </span> </i><i class="fa fa-sort-down" ></i></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;">
-                <a class="dropdown-item" data-toggle="modal" ><i class="fa fa-lock"></i> Change Password</a>
+                <!-- <a class="dropdown-item" data-toggle="modal" ><i class="fa fa-lock"></i> Change Password</a> -->
                 <!-- <a class="dropdown-item" data-toggle="modal" data-target="#showChangePwdId"><i class="fa fa-lock"></i> Change Password</a> -->
                 <a class="dropdown-item" ng-click="logoutFun()"><i class="fa fa-sign-out"></i> Logout</a>
             </div>

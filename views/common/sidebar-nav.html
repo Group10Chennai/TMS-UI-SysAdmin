@@ -7,11 +7,7 @@
                         <i class="fa fa-tachometer nav-icon" aria-hidden="true"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" ui-sref-active="active"  ui-sref="app.tms-vehicleDetails">
-                        <i class="fa fa-bus nav-icon" aria-hidden="true"></i> Vehicle User Details
-                    </a>
-                </li>
+
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle">
                         <img src="img/tms/tyreIcon.png" alt="TMS" class="fafont-icon" width="20" height="15">
@@ -20,7 +16,7 @@
                     <ul class="nav-dropdown-items">
                          <li class="nav-item">
                             <a class="nav-link navsub-sublink" ui-sref-active="active"  ui-sref="app.tms-vehicles">
-                                Fitment Detials
+                                Fitment Details
                             </a>
                         </li>
                         <li class="nav-item">
@@ -64,11 +60,17 @@
                             <span style="margin-left: 6px;"></span> Assign Vehicle
                     </a>
                 </li>
-                <li class="nav-item">
+		<li class="nav-item">
+                    <a class="nav-link" ui-sref-active="active"  ui-sref="app.tms-vehicleDetails">
+                        <i class="fa fa-bus nav-icon" aria-hidden="true"></i> Vehicle User Details
+                    </a>
+                </li>
+<!--                <li class="nav-item">
                     <a class="nav-link" ui-sref-active="active"  ui-sref="app.tms-user">
                         <i class="fa fa-user nav-icon" aria-hidden="true"></i> User Creation
                     </a>
                 </li>
+-->
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link" ui-sref-active="active" ng-click="logoutFun('Auto Logout')"><i class="fa fa-sign-out nav-icon"></i> Logout </a>

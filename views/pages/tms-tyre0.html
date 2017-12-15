@@ -98,8 +98,8 @@
 		    </div>
 		</div> <!-- /form-group -->
 		<div class="row" >
-		    <div class="col-5"></div>
-		    <div class="col-6">
+		    <div class="col-4"></div>
+		    <div class="col-4">
 			<button type="submit" id="addtyre_save" class="btn btn-success submit"
 			    ng-show="addTyreButtonStatus" ng-click = "AddTyre()"> Save </button>
 			<button type="submit" id="addtyre_save" class="btn btn-success submit"
@@ -119,62 +119,49 @@
             <div style="cursor:pointer;" ng-click = "setTyreDetailsType();">
                 <div class="info-box">
                     <span class="info-box-icon bg-orange">
-                			<span class="info-box-number ng-binding" >{{tyreCount_all}}</span>
-            		    </span>
+			<span class="info-box-number ng-binding" >{{tyreCount_all}}</span>
+		    </span>
                     <div class="info-box-content">
                         <span class="info-box-text ng-binding">Total Tyres</span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div>
         </div>
-
+	
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div style="cursor:pointer;" ng-click = "setTyreDetailsType('Installed');">
                 <div class="info-box">
                     <span class="info-box-icon bg-purple">
-                			<span class="info-box-number ng-binding" >{{tyreCount_installed}}</span>
-            		    </span>
+			<span class="info-box-number ng-binding" >{{tyreCount_installed}}</span>
+		    </span>
                     <div class="info-box-content">
                         <span class="info-box-text ng-binding">Installed</span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div>
         </div>
-
+	
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="" ng-click = "setTyreDetailsType('Scraped');">
                 <div class="info-box" style="cursor:pointer;" id="OfflineVehilcesListId">
                     <span class="info-box-icon bg-black">
-                			<span class="info-box-number ng-binding" >{{tyreCount_scraped}}</span>
-            		    </span>
+			<span class="info-box-number ng-binding" >{{tyreCount_scraped}}</span>
+		    </span>
                     <div class="info-box-content">
-                        <span class="info-box-text ng-binding">Scrapped</span>
+                        <span class="info-box-text ng-binding">Scraped</span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div>
         </div>
-
+	
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="" ng-click = "setTyreDetailsType('InStock');">
                 <div class="info-box" style="cursor:pointer;" id="CANDisconnectedVehilcesListId">
                     <span class="info-box-icon bg-greens">
-                			<span class="info-box-number ng-binding" >{{tyreCount_instock}}</span>
-            		    </span>
+			<span class="info-box-number ng-binding" >{{tyreCount_instock}}</span>
+		    </span>
                     <div class="info-box-content">
                         <span class="info-box-text ng-binding">Instock</span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="" ng-click="setTyreDetailsType('WithoutSensor');">
-                <div class="info-box" style="cursor:pointer;" >
-                    <span class="info-box-icon bg-mustard">
-                      <span class="info-box-number ng-binding" >{{tireCount_withoutSensor}}</span>
-                    </span>
-                    <div class="info-box-content" style="padding-top: 3px !important">
-                        <span class="info-box-text ng-binding">Tyre <br/>Without Sensor</span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div>
@@ -202,7 +189,7 @@
 	    </div>
 	</div>
     </form>
-
+    
     <table class="table table-fixed table-bordered table-hover" ng-if="TMSAllTyres.length > 0">
   	<thead>
 	    <tr class="tablehead">
@@ -294,7 +281,7 @@
 	    </button>
   	</tbody>
     </table>
-
+  
     <uib-pagination total-items="totalItems_tyres" ng-model="currentPage_tyres"
 	items-per-page="itemsPerPage_tyres" max-size="maxSize_tyres" ng-change="pageChanged_tyres()"
 	boundary-link-numbers="true" rotate="true" boundary-links="true">

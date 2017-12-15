@@ -275,48 +275,49 @@ app.controller('NavController', ['$scope', '$rootScope', '$state', 'APIServices'
     } catch (e) { loading.finish(); console.log(e); }
 	}
 
-	$scope.getTroubledVehCount = function() {
-	    try {
-		APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/getProblematicVehCount', false)
-		.then(
+  $scope.getTroubledVehCount = function() {
+    try {
+  		APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/getTPMSVehDataCount', false)
+  		.then(
 		    function(httpResponse){ // Success block
-			try{
-        loading.finish();
-        if(httpResponse.data.status == true) {
-            $scope.troubledVehCount = httpResponse.data.count;
-            var vehiclesList = DashboardDataSharingServices.getVehiclesList();
-            $scope.updatePieChart($scope.troubledVehCount, vehiclesList.length);
-			    } else {
+    			try{
+  			    loading.finish();
+  			    if(httpResponse.data.status == true) {
+      				$rootScope.troubledVehCount = httpResponse.data.badTPVehCount;
+              $rootScope.NontroubledVehCount = httpResponse.data.goodTPVehCount;
+              $rootScope.totalTPVehCount = $rootScope.troubledVehCount + $rootScope.NontroubledVehCount;
+      				var vehiclesList = DashboardDataSharingServices.getVehiclesList();
+              $scope.updatePieChart($rootScope.troubledVehCount, $rootScope.NontroubledVehCount);
+  			    } else {
     				// logout the user
     				$rootScope.logoutFun("TMS getProblematicVehCount - true");
-		    }
-			}
-			catch(error) {
-			    loading.finish();
-			    console.log("Error :"+error);
-			}
+  			    }
+    			}
+    			catch(error) {
+    			    loading.finish();
+    			    console.log("Error :"+error);
+    			}
 		    }, function(httpError){	 // Error block
-			loading.finish();
-			$rootScope.logoutFun("Error while processing request - getProblematicVehCount");
-			console.log("Error while processing request");
+    			loading.finish();
+    			$rootScope.logoutFun("Error while processing request - getProblematicVehCount");
+    			console.log("Error while processing request");
 		    }, function(httpInProcess){		// In process
-			console.log(httpInProcess);
+    			console.log(httpInProcess);
 		    }
-		);
+  		);
 	    } catch (e) { loading.finish(); console.log(e); }
 	}
 
-	$scope.updatePieChart = function(troubledVehCount, totalVehCount){
+  $scope.updatePieChart = function(troubledVehCount, nonTroubledVehCount){
 	    $rootScope.troubledVehChartData = [{
-		name:'Bad Pressure & Temp ( '+ troubledVehCount +' )',
-		id: 'TroubledVehicles1',
-		y: troubledVehCount
-	    },{
-		name:'Good Pressure & Temp ( '+ (totalVehCount - troubledVehCount) +' )',
-		id: 'TroubledVehicles0',
-		y: totalVehCount - troubledVehCount
-	    }
-	    ];
+    		name:'Bad Pressure & Temp ( '+ troubledVehCount +' )',
+    		id: 'TroubledVehicles1',
+    		y: troubledVehCount
+    	    },{
+    		name:'Good Pressure & Temp ( '+ (nonTroubledVehCount) +' )',
+    		id: 'TroubledVehicles0',
+    		y: nonTroubledVehCount
+	    }];
 	}
 
 	$rootScope.innerIdForvehTyreChart = "innerIdForvehTyreChart";
@@ -579,40 +580,41 @@ app.controller('TMSTempPressureController', ['$scope', '$rootScope', '$state', '
 	try {
 	    $rootScope.troubledVehiclesDetails = [];
 	    $scope.callTroubledVehiclesAPI = function() {
-		try {
-		    APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/getProblematicVehicles', true)
-		    .then(
-			function(httpResponse) { 	// Success block
-			    try {
-				loading.finish();
-				if(httpResponse.data.status == true){
-    				    var vehIdName_HashMap = DashboardDataSharingServices.getVehIdName_HashMap();
-				    $rootScope.processVehDetailsForView(httpResponse, function(response) {
-					angular.forEach(response, function(troubledVehicle, key){
-					    troubledVehicle.vehName = vehIdName_HashMap[troubledVehicle.vehId];
-					    $rootScope.troubledVehiclesDetails.push(troubledVehicle);
-					});
-				    });
-				}
-			    }
-			    catch(error) {
-				loading.finish();
-				console.log("Error :"+error);
-			    }
-			}, function(httpError) {	// Error block
-			    loading.finish();
-			    console.log("Error while processing request");
-			}, function(httpInProcess){	// In process
-			    console.log(httpInProcess);
-			}
-		    );
-		} catch (e) { loading.finish(); console.log(e); }
-	    }
-	    $timeout(function() {$scope.callTroubledVehiclesAPI(); }, 1000);
-	} catch(e){
+		      try {
+    		    APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/getTPMSVehData?type='+$rootScope.tempPressureType, true)
+    		    .then(
+        			function(httpResponse) { 	// Success block
+      			    try {
+          				loading.finish();
+          				if(httpResponse.data.status == true){
+          				    var vehIdName_HashMap = DashboardDataSharingServices.getVehIdName_HashMap();
+          				    $rootScope.processVehDetailsForView(httpResponse, function(response) {
+              					console.log(response);
+              					angular.forEach(response, function(troubledVehicle, key){
+            					    troubledVehicle.vehName = vehIdName_HashMap[troubledVehicle.vehId];
+            					    $rootScope.troubledVehiclesDetails.push(troubledVehicle);
+              					});
+              		    });
+          				}
+      			    }
+      			    catch(error) {
+          				loading.finish();
+          				console.log("Error :"+error);
+      			    }
+        			}, function(httpError) {	// Error block
+        			    loading.finish();
+        			    console.log("Error while processing request");
+        			}, function(httpInProcess){	// In process
+        			    console.log(httpInProcess);
+        			}
+    		    );
+      		} catch (e) { loading.finish(); console.log(e); }
+  	    }
 
+        $timeout(function() {$scope.callTroubledVehiclesAPI(); }, 1000);
+    } catch(e){
 	}
-    }]);
+}]);
 // end TMSTempPressureController
 
 app.controller('TMSController', ['$scope', '$rootScope', '$state', 'APIServices',

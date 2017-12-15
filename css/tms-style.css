@@ -507,5 +507,9 @@ legend {
 }
 
 .info-box-content {
-    padding: 15px 3px !important;  
+    padding: 15px 3px !important;
 }
+
+.bg-mustard {background: #e0c604 !important;color: white;}
+
+.bg-blue {background: #008577 !important;color: white;}
