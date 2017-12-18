@@ -10,25 +10,33 @@
 	<button type="button" class="close" data-dismiss="modal" style="cursor: pointer;">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="form-group row">
-	  <div class="col-2"></div>
-	  <label class="col-3 control-label" for="tmssensor">Sensor UID<em class="imp_asterisk">*</em></label>
-	  <div class="col-6">
-	    <input class="form-control" id="tmssensor_id" placeholder="Sensor UID" type="text" ng-model = "sensorUID">
-	  </div>
-  	</div> <!-- /form-group -->
-  	<br/>
-  	<div class="row" >
+        <div class="form-group">
+          <div class="row">
+        		<div class="col-2"></div>
+        		<label class="col-3 control-label" for="tmssensor">Sensor UID<em class="imp_asterisk">*</em></label>
+        		<div class="col-6">
+        		    <input class="form-control" id="tmssensor_id" placeholder="Sensor UID" type="text" ng-model = "sensorUID">
+        		</div>
+          </div>
+          <br/>
+          <div class="row">
+        		<div class="col-2"></div>
+        		<label class="col-3 control-label" for="tmssensor">RIM No<em class="imp_asterisk">*</em></label>
+        		<div class="col-6">
+        		    <input class="form-control" id="rimNo_id" placeholder="RIM No" type="text" ng-model = "rimNo">
+        		</div>
+          </div>
+  	    </div> <!-- /form-group -->
+      	<br/>
+      	<div class="row" >
       	  <div class="col-4"></div>
-	  <div class="col-4">
-    	    <button type="submit" id="sensor_uid_save" class="btn btn-success submit"
-	      ng-show="addSensorButtonStatus" ng-click = "AddSensor()"> Save </button>
-    	    <button type="submit" id="sensor_uid_save" class="btn btn-success submit"
-	      ng-show="updateSensorButtonStatus" ng-click = "updateSensorDetails()"> Update </button>
-    	    <button type="button" id="sensor_uid_cancel" class="btn btn-default cancel"
-      	      onclick="sensor_clear();" ng-click="showSensorAddingForm = !showSensorAddingForm"> Clear </button>
-	  </div>
-  	</div>
+      	  <div class="col-4">
+      	    <button type="submit" id="sensor_uid_save" class="btn btn-success submit"
+      	      ng-show="addSensorButtonStatus" ng-click = "AddSensor()"> Save </button>
+      	    <button type="submit" id="sensor_uid_save" class="btn btn-success submit"
+      	      ng-show="updateSensorButtonStatus" ng-click = "updateSensorDetails()"> Update </button>
+      	  </div>
+      	</div>
       </div>
     </div>
   </div>

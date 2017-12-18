@@ -526,7 +526,8 @@ app.controller('TMSSysAdminController', ['$scope', '$rootScope', '$state', 'APIS
 	$scope.AddSensor = function()
 	{
 		try {
-			APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/Sensor/Add?sensorUID='+$scope.sensorUID, true)
+			APIServices.callGET_API($rootScope.HOST_TMS + 'api/tms/Sensor/Add?sensorUID='+$scope.sensorUID
+        +'&rimNo='+$scope.rimNo, true)
  		 .then(
  			 function(httpResponse){ // Success block
  				 try{
@@ -627,6 +628,7 @@ app.controller('TMSSysAdminController', ['$scope', '$rootScope', '$state', 'APIS
 	{
 		$('#showTMSSensorModalId').modal('show');
 		$scope.sensorUID = sensorDetails.sensorUID;
+    $scope.rimNo = sensorDetails.rimNo;
 		$scope.updateSensor = sensorDetails;
 		$scope.updateSensorButtonStatus = true;
 		$scope.showSensorAddingForm = true;
@@ -641,6 +643,7 @@ app.controller('TMSSysAdminController', ['$scope', '$rootScope', '$state', 'APIS
 		$scope.showSensorAddingForm = true;
 		$scope.addSensorButtonStatus = true;
 		$scope.sensorUID = '';
+    $scope.rimNo = '';
 		$scope.updateSensorButtonStatus = false;
 	}
 
@@ -648,7 +651,7 @@ app.controller('TMSSysAdminController', ['$scope', '$rootScope', '$state', 'APIS
 	{
 		try {
 			var UPDATE_URL =$rootScope.HOST_TMS + 'api/tms/Sensor/Update?sensorId='+$scope.updateSensor.sensorId
-			+'&sensorUID='+$scope.sensorUID;
+			+'&sensorUID='+$scope.sensorUID+ '&rimNo='+ $scope.rimNo;
 
 			APIServices.callGET_API(UPDATE_URL, true)
  		 .then(
